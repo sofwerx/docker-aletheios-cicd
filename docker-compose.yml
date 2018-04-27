@@ -60,7 +60,7 @@ services:
       RELEASE_TYPE: UNOFFICIAL
       LOCAL_MIRROR: 'false'
       CRONTAB_TIME: now
-      CUSTOM_PACKAGES: GmsCore GsfProxy FakeStore MozillaNlpBackend NominatimNlpBackend com.google.android.maps.jar FDroid FDroidPrivilegedExtension
+      CUSTOM_PACKAGES: GmsCore GsfProxy FakeStore MozillaNlpBackend OpenBmapNlpBackend LocalWifiNlpBackend LocalGSMBackend NominatimNlpBackend com.google.android.maps.jar FDroid FDroidPrivilegedExtension
       OPENDELTA_BUILDS_JSON: ota.json
       USE_CCACHE: 1
       CCACHE_COMPRESS: 1
