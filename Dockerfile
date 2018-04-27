@@ -1,5 +1,4 @@
 FROM debian:stretch
-MAINTAINER Nicola Corna <nicola@corna.info>
 
 # Environment variables
 #######################
@@ -172,7 +171,8 @@ RUN apt-get install -y bc bison build-essential ccache cron curl flex \
       lib32readline-dev lib32z1-dev libesd0-dev liblz4-tool libncurses5-dev \
       libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lsof lzop \
       maven openjdk-7-jdk openjdk-8-jdk pngcrush procps python rsync schedtool \
-      squashfs-tools wget xdelta3 xsltproc yasm zip zlib1g-dev
+      squashfs-tools wget xdelta3 xsltproc yasm zip zlib1g-dev \
+      bsdmainutils cgpt ccache
 
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
 RUN chmod a+x /usr/local/bin/repo
@@ -202,6 +202,8 @@ WORKDIR $SRC_DIR
 # Allow redirection of stdout to docker logs
 ############################################
 RUN ln -sf /proc/1/fd/1 /var/log/docker.log
+
+ADD custom_packages.xml /srv/local_manifests/
 
 # Set the entry point to init.sh
 ################################
