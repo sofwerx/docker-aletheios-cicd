@@ -28,6 +28,10 @@ if [ "$USE_CCACHE" = 1 ]; then
   ccache -M $CCACHE_SIZE 2>&1
 fi
 
+if [ -f /custom_packages.xml ] ; then
+  cp -f /custom_packages.xml ${LMANIFEST_DIR}/
+fi
+
 # Initialize Git user information
 git config --global user.name $USER_NAME
 git config --global user.email $USER_MAIL

@@ -203,7 +203,7 @@ WORKDIR $SRC_DIR
 ############################################
 RUN ln -sf /proc/1/fd/1 /var/log/docker.log
 
-ADD custom_packages.xml /srv/local_manifests/
+ADD custom_packages.xml /
 
 # Set the entry point to init.sh
 ################################

@@ -55,7 +55,6 @@ services:
       #OTA_URL: 
       #INCLUDE_PROPRIETARY: false
       SIGN_BUILDS: 'false'
-      CCACHE_SIZE: 50G
       WITH_SU: 'true'
       RELEASE_TYPE: UNOFFICIAL
       LOCAL_MIRROR: 'false'
@@ -64,5 +63,8 @@ services:
       OPENDELTA_BUILDS_JSON: ota.json
       USE_CCACHE: 1
       CCACHE_COMPRESS: 1
+      CCACHE_SIZE: 50G
+      USER_NAME: DevOps
+      USER_MAIL: devops@sofwerx.org
     logging: *default-logging
 
