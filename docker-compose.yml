@@ -51,10 +51,10 @@ services:
       BRANCH_NAME: 'lineage-15.1'
       DEVICE_LIST: 'taimen'
       SIGNATURE_SPOOFING: 'restricted'
+      SIGN_BUILDS: "false"
       #CUSTOM_PACKAGES: 
       #OTA_URL: 
       #INCLUDE_PROPRIETARY: false
-      SIGN_BUILDS: 'false'
       WITH_SU: 'true'
       RELEASE_TYPE: UNOFFICIAL
       LOCAL_MIRROR: 'false'
