@@ -114,6 +114,34 @@ Other useful settings are:
  * `LOCAL_MIRROR (false)`: change this to `true` if you want to create a local mirror of the LineageOS source (> 200 GB)
  * `CRONTAB_TIME (now)`: instead of building immediately and exit, build at the specified time (uses standard cron format)
 
+## Flashing
+Be sure the phone is tethered to a computer with Android SDK installed via USB cable.
+Go into the phone's settings and enable developer settings if it isn't already by tapping build number 5 times. Then go to the developer settings and enable OEM unlocking. This will allow you access to the boot loader. 
+
+Now reboot the phone into the bootloader by press and holding the power and volume down buttons. On a computer with Android SDK installed run the following commands to unlock the phone:
+```
+fastboot flashing unlock_critical
+fastboot flashing unlock
+```
+Now that the phone is unlocked, boot it into recovery mode and select wipe data/factory reset. This will delete anything in storage.
+Restart the phone and go back to the bootloader. 
+
+On a computer run `fastboot boot <twrp_image>`. This is another bootloader that will be used to install Lineage OS. 
+
+Now wipe everything. Including the system. Reboot the phone into bootloader and go back to twrp.
+
+Now run: `adb push <lineage_firmware> /sdcard`
+
+Once that is on the phone go to install in the twrp bootloader and click the new zip file. It will install itself. 
+When it is done reboot the phone. It should boot into Lineage OS.
+
+Four apps must be present to use the chroot: fdroid (should already be there), nethunter, Term-nh, and VNC-nh.
+Use adb to install these to the phone: `adb install <app.apk>`
+Once they are installed, make sure root access is allowed in the developer settings and run nethunter and accept all its permission requests. 
+
+Now to install the chroot. Restart into the bootloader and go into twrp again. This time push the nethunter zip file to /sdcard with adb.
+install it like you did Lineage OS. Reboot the phone when you are done and do not install the app when they ask. Verify that the chroot is there by opening nethunter and term.
+
 ## Volumes
 
 You also have to provide Docker some volumes, where it'll store the source, the
