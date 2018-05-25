@@ -137,6 +137,7 @@ When it is done reboot the phone. It should boot into Lineage OS.
 
 Four apps must be present to use the chroot: fdroid (should already be there), nethunter, Term-nh, and VNC-nh.
 Use adb to install these to the phone: `adb install <app.apk>`
+
 Once they are installed, make sure root access is allowed in the developer settings and run nethunter and accept all its permission requests. 
 
 Now to install the chroot. Restart into the bootloader and go into twrp again. This time push the nethunter zip file to /sdcard with adb.
