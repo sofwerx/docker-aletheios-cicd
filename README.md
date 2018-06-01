@@ -1,5 +1,7 @@
 # docker-lineage-cicd
 
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/sofwerx/docker-aletheios-cicd.svg?columns=all)](https://waffle.io/sofwerx/docker-aletheios-cicd)
+
 Docker microservice for LineageOS Continuous Integration and Continous Deployment
 
 ## Why Docker?
