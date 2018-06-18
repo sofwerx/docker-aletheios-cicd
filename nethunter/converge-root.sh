@@ -9,6 +9,22 @@ mkdir -p /data/local/tmp
 
 chmod 1777 /data/local/tmp
 
+if [ ! -d /data/ssh/authorized_keys ]; then
+  curl https://github.com/ianblenke.keys > /data/ssh/authorized_keys
+fi
+if [ ! -f /data/ssh/ssh_host_dsa_key ]; then
+  ssh-keygen -f /data/ssh/ssh_host_dsa_key -N '' -t dsa
+fi
+if [ ! -f /data/ssh/ssh_host_rsa_key ]; then
+  ssh-keygen -f /data/ssh/ssh_host_rsa_key -N '' -t dsa
+fi
+if [ ! -f /data/ssh/ssh_host_ecdsa_key ]; then
+  ssh-keygen -f /data/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
+fi
+if [ ! -f /data/ssh/ssh_host_ed25519_key ]; then
+  ssh-keygen -f /data/ssh/ssh_host_ed25519_key -N '' -t ed25519
+fi
+
 # set up sshd
 
 cat > /data/ssh/sshd_config << EOF
@@ -28,4 +44,4 @@ chmod 600 /data/ssh/authorized_keys
 chown shell /data/ssh/authorized_keys
 chmod 644 /data/ssh/sshd_config
 
-/data/local/userinit.d/99sshd
+/system/bin/sshd
