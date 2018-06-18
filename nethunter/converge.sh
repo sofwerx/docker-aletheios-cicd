@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/system/bin/sh -xe
 
 mkdir -p /data/usr
 mkdir -p /data/bin
@@ -9,15 +9,23 @@ mkdir -p /data/local/tmp
 
 chmod 1777 /data/local/tmp
 
-# This should be run under /data/chroot.sh
-cat <<EOF > /etc/resolv.conf
-nameserver 8.8.8.8
-nameserver 8.8.4.4
+# set up sshd
+
+cat > /data/ssh/sshd_config << EOF
+AuthorizedKeysFile /data/ssh/authorized_keys
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+PermitRootLogin no
+Subsystem sftp internal-sftp
+pidfile /data/ssh/sshd.pid
 EOF
-gpg --keyserver hkp://keys.gnupg.net --recv-key 7D8D0BF6
-gpg -a --export 7D8D0BF6 | apt-key add -
 
-export DEBIAN_FRONTEND=noninteractive
-apt-get update
-apt-get dist-upgrade -y
+mkdir -p /data/local/userinit.d
+sed 's#/system/etc/ssh#/data/ssh#' /system/bin/start-ssh \
+      > /data/local/userinit.d/99sshd
+chmod 755 /data/local/userinit.d/99sshd
+chmod 600 /data/ssh/authorized_keys
+chown shell /data/ssh/authorized_keys
+chmod 644 /data/ssh/sshd_config
 
+/data/local/userinit.d/99sshd
