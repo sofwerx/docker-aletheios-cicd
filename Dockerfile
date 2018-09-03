@@ -203,6 +203,8 @@ WORKDIR $SRC_DIR
 ############################################
 RUN ln -sf /proc/1/fd/1 /var/log/docker.log
 
+RUN git config --global --add color.ui true
+
 ADD custom_packages.xml /
 
 # Set the entry point to init.sh
