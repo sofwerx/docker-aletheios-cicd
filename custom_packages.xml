@@ -2,5 +2,6 @@
 <manifest>
   <project name="sofwerx/android_kernel_google_wahoo" path="kernel/google/wahoo" remote="github" />
   <project name="lineageos4microg/android_prebuilts_prebuiltapks" path="prebuilts/prebuiltapks" remote="github" revision="master" />
+  <remove-project name="LineageOS/android_system_core" />
   <project name="sofwerx/android_system_core" path="system/core" remote="github" revision="lineage-15.1"/>
 </manifest>
